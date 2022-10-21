@@ -1,0 +1,86 @@
+--
+--lib996:include("Script/serialize.lua")
+--
+--local cfg_vip = lib996:include("QuestDiary/cfgcsv/cfg_vip.lua")
+--local cfg_zhanshi = lib996:include("QuestDiary/cfgcsv/cfg_zhanshi.lua")
+--
+--
+--function openUI(actor)
+--    lib996:showformwithcontent(actor, "D/至尊王权", "")
+--end
+----同步信息
+--function SyncResponse(actor)
+--
+--    --lib996:setint(0,actor,"玩家VIP等级", 0)
+--    local viplv = lib996:getint(0,actor,"玩家VIP等级")
+--    local PayVip_data ={}
+--    PayVip_data.level = viplv
+--    -- print(lib996:gethumnewvalue(actor,200))
+--    -- print(lib996:gethumnewvalue(actor,203))
+--    -- print(lib996:gethumnewvalue(actor,60))
+--    -- print(lib996:gethumnewvalue(actor,59))
+--    -- print(lib996:gethumnewvalue(actor,30))
+--    -- print(lib996:gethumnewvalue(actor,58))
+--    -- print(lib996:gethumnewvalue(actor,201))
+--
+--    lib996:showformwithcontent(actor, "", "PayVip.SyncResponse("..serialize(PayVip_data)..")")
+--end
+--
+----激活
+--function Activation(actor,param)
+--    local jihuo_lv = tonumber(param)
+--    if not jihuo_lv then return end
+--    local cfg = cfg_vip[jihuo_lv]
+--    if not cfg then return end
+--    local viplv = lib996:getint(0,actor,"玩家VIP等级")
+--    if jihuo_lv <= viplv then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>已激活！</font>","Type":9}')
+--        return
+--    elseif jihuo_lv > viplv + 1 then
+--        local str = viplv == 0 and cfg_vip[1].Txt or cfg_vip[viplv].Txt
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>请先激活' .. str .. '!</font>","Type":9}')
+--        return
+--    end
+--    if not QsQcheckMoneyNum(actor, 7, cfg.NeedExp) then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>灵符不足'.. cfg.NeedExp ..'!</font>","Type":9}')
+--        return
+--    end
+--    if not Bag.checkBagEmptyNum(actor, #cfg.Gift) then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>包裹空间不足!</font>","Type":9}')
+--        return
+--    end
+--    lib996:changemoney(actor, 7, "-", cfg.NeedExp, "", true)
+--    Player.giveItemByTable(actor, cfg.Gift, "", 1, 0)--给物品
+--    local last_cfg = cfg_vip[viplv] and cfg_vip[viplv].shuxing or nil
+--
+--    QsQupdateSomeAddr(actor, last_cfg, cfg.shuxing)
+--
+--
+--
+--    viplv = viplv + 1 > #cfg_vip and #cfg_vip or viplv + 1
+--    lib996:setint(0,actor,"玩家VIP等级", viplv)
+--
+--    if cfg_zhanshi[viplv - 1] then
+--        lib996:clearplayeffect(actor, cfg_zhanshi[viplv - 1].id)
+--    end
+--    lib996:playeffect(actor,cfg_zhanshi[viplv].id,25,80,0,1,1)
+--
+--    lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>成功激活！</font>","Type":9}')
+--    SyncResponse(actor)
+--
+--
+--
+--end
+--
+--
+--GameEvent.add(EventCfg.onLoginAttr, function (actor, loginattrs)
+--    local viplv = lib996:getint(0,actor,"玩家VIP等级")
+--    local cfg = cfg_vip[viplv]
+--    if cfg then
+--        table.insert(loginattrs,cfg.shuxing)
+--        lib996:playeffect(actor,cfg_zhanshi[viplv].id,25,80,0,1,1)
+--    end
+-- end, "至尊王权")
+--
+--
+--

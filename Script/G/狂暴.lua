@@ -1,0 +1,89 @@
+--lib996:include("Script/serialize.lua")
+--
+--local cfg_kuangbao = lib996:include("QuestDiary/cfgcsv/cfg_狂暴.lua")
+--
+--local cost_id = cfg_kuangbao[1].cost[1][1]
+--local cost_num = cfg_kuangbao[1].cost[1][2]
+--
+----对应配置文档中的属性与cfg_att_score对不上，因此手动更改要加成的属性
+--local  shuxing = {
+--    [1] = {
+--        [1] = 1,--生命
+--        [2] = 10000,
+--    },
+--    [2] = {
+--        [1] = 29,--暴击几率
+--        [2] = 2000,
+--    },
+--    [3] = {
+--        [1] = 3,--魔法值
+--        [2] = 1000,
+--    },
+--}
+--
+----激活狂暴之力
+--function Active(actor)
+--    --校验是否激活
+--    local param = lib996:getint(0, actor, "isActive")
+--
+--    if tonumber(param) == 1 then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>不能重复激活</font>","Type":9}')
+--        return
+--    end
+--    --校验货币
+--    if not QsQcheckMoneyNum(actor, cost_id, cost_num) then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>货币不足，无法激活</font>","Type":9}')
+--        return
+--    end
+--
+--    --增加属性
+--    if shuxing then
+--        for _,item in ipairs(cfg_kuangbao[1].cost) do
+--            local idx,num = item[1], item[2]
+--            if idx <= 100 then
+--                lib996:changemoney(actor, idx, "-", num, "扣除货币", true)
+--            end
+--        end
+--        QsQupdateSomeAddr(actor,nil,shuxing)
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>激活成功</font>","Type":9}')
+--        lib996:setint(0, actor, "isActive", 1)
+--        lib996:showformwithcontent(actor, "G/狂暴之力面板", "kuangbao")
+--    end
+--
+--end
+--
+----击杀者奖励
+--function KillerReword(actor, player)
+--    local isActive = lib996:getint(0, player, "isActive")
+--    if isActive ~= 1 then return end
+--    local reward = {
+--        [1] = {
+--            [1] = 7,
+--            [2] = 2500,
+--        }
+--    }
+--    local idx,num = reward[1][1], reward[1][2]
+--    if idx <= 100 then
+--        lib996:changemoney(actor, idx, "+", num, "奖励货币", true)
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>获得2500灵符</font>","Type":9}')
+--    end
+--    --被击杀后掉落狂暴
+--    local hour = os.date("*t").hour
+--    if hour < 8 or hour > 23 then return end --晚上11点至早上8点之间不掉落狂暴
+--
+--    QsQupdateSomeAddr(player,shuxing, nil)
+--
+--    lib996:setint(0, player, "isActive", 0)
+--    lib996:sendmsg(player, 1, '{"Msg":"<font color=\'#ff0000\'>狂暴之力消失</font>","Type":9}')
+--end
+--
+----登录添加属性
+--function LoginAttr(actor, loginattrs)
+--    local isActive = lib996:getint(0, actor, "isActive")
+--    if isActive ~= 1 then return end
+--    table.insert(loginattrs, shuxing)
+--
+--end
+--
+--GameEvent.add(EventCfg.onLoginAttr, LoginAttr, "狂暴之力")
+--GameEvent.add(EventCfg.onkillplay,KillerReword, "击杀奖励")

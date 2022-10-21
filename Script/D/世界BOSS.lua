@@ -1,0 +1,37 @@
+--lib996:include("Script/serialize.lua")
+--
+--
+--local cfg_boss_tiaozhan = lib996:include("QuestDiary/cfgcsv/cfg_boss_tiaozhan.lua")
+--function openUI(actor)
+--    lib996:showformwithcontent(actor, "D/世界BOSS", "")
+--end
+----同步信息
+--function SyncResponse(actor)
+--    local WorldBoss_data = {}
+--    for i,data in ipairs(cfg_boss_tiaozhan) do
+--        WorldBoss_data[i] = {}
+--        for j,_data in ipairs(data.toMapId) do
+--            local mon_name = lib996:getmonbaseinfo(data.monsterid,1)
+--            local mon_num =  lib996:checkrangemoncount( _data[1], mon_name, 0, 0, 1000)
+--            table.insert(WorldBoss_data[i],mon_num)
+--        end
+--    end
+--
+--    lib996:showformwithcontent(actor, "", "WorldBoss.SyncResponse("..serialize(WorldBoss_data)..")")
+--end
+--
+--function GotoMap(actor,param1,param2)
+--    if not param1 or not param2 then return end
+--    local tab_index = tonumber(param1)
+--    local index = tonumber(param2)
+--
+--    local cfg = cfg_boss_tiaozhan[tab_index].toMapId[index]
+--
+--    if not cfg then return end
+--
+--    lib996:map(actor, cfg[1])
+--
+--    --lib996:killmonsters( cfg[1], "*",0 , true)
+--
+--    lib996:showformwithcontent(actor, "", "WorldBoss.CloseUI()")
+--end

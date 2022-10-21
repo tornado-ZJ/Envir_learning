@@ -1,0 +1,135 @@
+--lib996:include("Script/serialize.lua")
+--
+--
+--local cfg_baoshi = lib996:include("QuestDiary/cfgcsv/cfg_baoshi.lua")
+--
+--local Setpos_data = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,55} --镶嵌装备位
+--
+--function openUI(actor)
+--    lib996:showformwithcontent(actor, "D/宝石镶嵌", "")
+--end
+--
+----同步信息
+--function SyncResponse(actor,param)
+--    ---lib996:mapmove(actor, 0, 327, 269, 1)
+--    local state = lib996:getint(0,actor,"筛选宝石状态")
+--
+--    local GemSetting_data = {}
+--    table.insert(GemSetting_data,state) --是否筛选
+--
+--    local Gem_date = GetGemdata(actor)
+--
+--    table.insert(GemSetting_data,Gem_date) --是否筛选
+--    local updateway = param and 1 or 0
+--    table.insert(GemSetting_data,updateway) --是否筛选
+--
+--    -- print(lib996:gethumnewvalue(actor,3),"3")
+--    -- print(lib996:gethumnewvalue(actor,4),"4")
+--    -- print(lib996:gethumnewvalue(actor,9),"9")
+--    -- print(lib996:gethumnewvalue(actor,10),"10")
+--    -- print(lib996:gethumnewvalue(actor,35),"35")
+--    -- print(lib996:gethumnewvalue(actor,30),"30")
+--    lib996:showformwithcontent(actor, "", "GemSetting.SyncResponse("..serialize(GemSetting_data)..")")
+--end
+--
+--function Setcheckboxstate(actor,param)
+--    local state = tonumber(param)
+--    if not state then return end
+--    state = state == 0 and 1 or 0
+--    lib996:setint(0,actor,"筛选宝石状态", state)
+--    SyncResponse(actor,1)
+--end
+--function Setting(actor,param1,param2,param3,param4)
+--    local Select_pos = tonumber(param1) ---选中要镶嵌迪装备位
+--    local Select_index = tonumber(param2) --选中要镶嵌的类型
+--    local index = tonumber(param3) --要镶嵌的宝石的下标
+--    local gemitemid = tonumber(param4) --宝石id
+--
+--    if not Select_pos or not Select_index or not index or not gemitemid then return end
+--    local Gem_date = GetGemdata(actor)
+--
+--    local _gemitemid = Gem_date[Select_pos][Select_index]
+--    if not _gemitemid then return end
+--
+--    local _StdMode = cfg_baoshi[gemitemid].StdMode
+--    if _StdMode ~= Select_index then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>镶嵌的宝石类型不符合！</font>","Type":9}')
+--        return
+--    end
+--    if _gemitemid ~= 0 then
+--        if cfg_baoshi[gemitemid].dengji <= cfg_baoshi[_gemitemid].dengji then
+--            lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>请镶嵌更高阶的宝石！</font>","Type":9}')
+--            return
+--        end
+--    end
+--    lib996:setint(0,actor,Select_pos.."镶嵌的宝石"..Select_index, gemitemid)
+--
+--
+--    --检查物品数量
+--    if not  QsQcheckItemNumByIdx(actor, gemitemid, 1) then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>材料不足</font>","Type":9}')
+--        return
+--    end
+--
+--
+--    local name = lib996:getstditeminfo(gemitemid, 1)
+--    lib996:takeitem(actor, name, 1)
+--    if _gemitemid == 0 then
+--        QsQupdateSomeAddr(actor, nil, cfg_baoshi[gemitemid].Attribute)
+--    else
+--        local name = lib996:getstditeminfo(_gemitemid, 1)
+--        lib996:giveitem(actor, name, 1)
+--        QsQupdateSomeAddr(actor, cfg_baoshi[_gemitemid].Attribute, cfg_baoshi[gemitemid].Attribute)
+--    end
+--
+--    SyncResponse(actor,1)
+--
+--
+--end
+--
+--function GetGemdata(actor)
+--    local Gem_date = {}
+--    for i,data in ipairs(Setpos_data) do
+--        local _Gemdata = {}
+--        for j = 1,8 do
+--            local gem = lib996:getint(0,actor,i .."镶嵌的宝石"..j)
+--            table.insert(_Gemdata,gem)
+--        end
+--        table.insert(Gem_date,_Gemdata)
+--
+--    end
+--    return Gem_date
+--end
+--
+--
+----卸下
+--function Rmove(actor,param1,param2)
+--    local Select_pos = tonumber(param1) ---选中要镶嵌迪装备位
+--    local Select_index = tonumber(param2) --选中要镶嵌的类型
+--    if not Select_pos or not Select_index then return end
+--    local Gem_date = GetGemdata(actor)
+--    local gemitemid = Gem_date[Select_pos][Select_index]
+--    if not gemitemid or gemitemid == 0 then return end
+--    if not Bag.checkBagEmptyNum(actor, 1) then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>包裹空间不足!</font>","Type":9}')
+--        return
+--    end
+--    lib996:setint(0,actor,Select_pos.."镶嵌的宝石"..Select_index, 0)
+--    local name = lib996:getstditeminfo(gemitemid, 1)
+--    lib996:giveitem(actor, name, 1)
+--    QsQupdateSomeAddr(actor, cfg_baoshi[gemitemid].Attribute,nil)
+--    SyncResponse(actor,1)
+--end
+--
+--GameEvent.add(EventCfg.onLoginAttr, function (actor, loginattrs)
+--    local Gem_date = GetGemdata(actor)
+--    for i,data in ipairs(Gem_date) do
+--        for j,_data in ipairs(data) do
+--            if _data ~= 0 and cfg_baoshi[_data] then
+--                table.insert(loginattrs,cfg_baoshi[_data].Attribute)
+--            end
+--        end
+--    end
+-- end, "宝石镶嵌")
+--
+--

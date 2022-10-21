@@ -1,0 +1,10 @@
+;SEC：按秒运行
+;MIN：按分运行
+;HOUR：按小时运行
+;DAY：按天运行
+;RunOnDay：按每天什么时候运行
+;RUNONWEEK：按星期几及时间运行
+;————————————————————————————————————————————————————
+
+#AutoRun NPC RUNONDAY 00:00:00 @beforedawn
+

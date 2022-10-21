@@ -1,0 +1,52 @@
+--lib996:include("Script/serialize.lua")
+--local cfg_zhuansheng = require_ex("Envir/QuestDiary/cfgcsv/cfg_转生")
+--
+--function zhuanshengzhili(actor)
+--    --print("我是转生")
+--    lib996:showformwithcontent(actor, "A/转生", "")
+--end
+--
+--function zhuanshengok(actor)
+--    local zslevel = lib996:getbaseinfo(actor, ConstCfg.gbase.renew_level)
+--    local next_zslevel = zslevel + 1
+--    local cfg = cfg_zhuansheng[zslevel]
+--    local next_cfg = cfg_zhuansheng[next_zslevel]
+--
+--    if not next_cfg then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>转生已满</font>","Type":9}')
+--        return
+--    end
+--
+--    local level = lib996:getbaseinfo(actor, ConstCfg.gbase.level)
+--    if level < cfg.Level then       --判断人物等级是否满足条件
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>当前等级不足</font>","Type":9}')
+--        return
+--    end
+--
+--    local name = QsQIsItemNumByTable(actor, cfg.Consume)
+--    print("转生消耗:"..lib996:tbl2json(cfg.Consume))
+--    if name then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>材料不足</font>","Type":9}')
+--        return
+--    end
+--    --拿走材料
+--    QsQtakeItemByTable(actor, cfg.Consume)
+--    --转生降级
+--    lib996:changelevel(actor, "-", cfg.DelLv)
+--    --设置转生等级
+--    lib996:setbaseinfo(actor, ConstCfg.gbase.renew_level, next_zslevel)
+--    --更新转生属性
+--    QsQupdateSomeAddr(actor, cfg.Attribute0, next_cfg.Attribute0)
+--    lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>转生成功</font>","Type":9}')
+--end
+--
+--
+--GameEvent.add(EventCfg.onLoginAttr, function (actor, loginattrs)
+--    local zslevel = lib996:getbaseinfo(actor, ConstCfg.gbase.renew_level)
+--    if zslevel <= 0 then return end
+--    local cfg = cfg_zhuansheng[zslevel]
+--    if not cfg then return end
+--    table.insert(loginattrs, cfg.Attribute0)
+--end, "转生附加属性")
+--
+--

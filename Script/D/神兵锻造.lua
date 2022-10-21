@@ -1,0 +1,50 @@
+--lib996:include("Script/serialize.lua")
+--
+--
+--local cfg_Simplecompound = lib996:include("QuestDiary/cfgcsv/cfg_Simplecompound.lua")
+--function openUI(actor)
+--    lib996:showformwithcontent(actor, "D/神兵锻造", "")
+--end
+----同步信息
+--function SyncResponse(actor)
+--    ---lib996:mapmove(actor, 0, 327, 269, 1)
+--    lib996:showformwithcontent(actor, "", "WeaponForging.SyncResponse()")
+--end
+--
+----合成
+--function Hecheng(actor,param)
+--    local Choose_Index = 0
+--    if param then
+--        Choose_Index = tonumber(param)
+--    end
+--
+--    local cfg = cfg_Simplecompound[Choose_Index]
+--    if not cfg then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>无法合成</font>","Type":9}')
+--        return
+--    end
+--
+--    if not Bag.checkBagEmptyNum(actor, 3) then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>包裹空间不足!</font>","Type":9}')
+--        return
+--    end
+--
+--    local name = QsQIsItemNumByTable(actor, cfg.itemid)
+--    if name then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>材料['..name..']不足</font>","Type":9}')
+--       -- Player.giveItemByTable(actor, cfg.itemid, "", 10, 0)--调试
+--        return
+--    end
+--    QsQtakeItemByTable(actor, cfg.itemid)----拿走物品
+--
+--    --成功率
+--    local Rate = math.random(1,10000)
+--    if Rate > cfg.probability then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>合成失败！</font>","Type":9}')
+--        return
+--    end
+--
+--    Player.giveItemByTable(actor, cfg.product, "", 1)--给物品
+--    lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>合成成功！</font>","Type":9}')
+--    SyncResponse(actor) --同步信息
+--end

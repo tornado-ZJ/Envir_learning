@@ -1,0 +1,118 @@
+--lib996:include("Script/serialize.lua")
+--
+--
+--local cfg_sixiang = lib996:include("QuestDiary/cfgcsv/cfg_sixiang.lua")
+--function openUI(actor)
+--    --local QingLong_lv,BaiHu_lv,ZhuQue_lv,XuanWu_lv= GetFourData(actor,3)
+--    lib996:showformwithcontent(actor, "D/四象之力", "")
+--end
+--local Str_List = {"青龙等级","白虎等级","朱雀等级","玄武等级"}
+--local add_List = {0,20,40,88}
+----同步信息
+--function SyncResponse(actor)
+--    lib996:showformwithcontent(actor, "", "Fourelephants.SyncResponse("..serialize(GetFourData(actor,2))..")")
+--end
+----升级
+--function ShengjiFun(actor,param,param2)
+--    local Index = 0 --升级方式 元宝 灵符
+--    local Choose_Index = 0 --升级类型 1青龙 2百虎 3朱雀 4玄武
+--    if param then
+--        Index = tonumber(param)
+--    end
+--    if param2 then
+--        Choose_Index = tonumber(param2)
+--    end
+--
+--    local level = GetFourData(actor,1,Choose_Index)
+--    local next_level = level + 1
+--    local cfg = cfg_sixiang[level+add_List[Choose_Index]]
+--    local next_cfg = cfg_sixiang[next_level+add_List[Choose_Index]]
+--
+--    if not next_cfg or next_cfg.type ~= Choose_Index then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>无法继续升级</font>","Type":9}')
+--        return
+--    end
+--    local idx,num = 0,0
+--    local name = ""
+--    --升级方式一
+--    if Index == 1 then
+--        idx,num = next_cfg.cost[1][1],next_cfg.cost[1][2]
+--        name = lib996:getstditeminfo(idx, 1)
+--    end
+--    --升级方式二
+--    if Index == 2 then
+--        idx,num = next_cfg.cost[2][1],next_cfg.cost[2][2]
+--        name = lib996:getstditeminfo(idx, 1)
+--    end
+--    if idx <= 100 then
+--        if not QsQcheckMoneyNum(actor, idx, num) then
+--            lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>材料不足</font>","Type":9}')
+--            --lib996:changemoney(actor, idx, "+", num, "", true)----调试
+--            return
+--        end
+--    else
+--        if not QsQcheckItemNumByIdx(actor, idx, num) then
+--            lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>材料不足</font>","Type":9}')
+--            --lib996:giveitem(actor,name,num)----调试
+--            return
+--        end
+--    end
+--    --扣除材料
+--    if idx <= 100 then
+--        lib996:changemoney(actor, idx, "-", num, "", true)
+--    else
+--        lib996:takeitem(actor, name, num)
+--    end
+--
+--    local Rate = math.random(1,10000)
+--    if Rate > next_cfg.cgjl then
+--        lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>升级失败！</font>","Type":9}')
+--        return
+--    end
+--
+--    if not cfg then
+--        QsQupdateSomeAddr(actor, nil, next_cfg.attribute)
+--    else
+--        QsQupdateSomeAddr(actor, cfg.attribute, next_cfg.attribute)
+--    end
+--
+--    lib996:sendmsg(actor, 1, '{"Msg":"<font color=\'#ff0000\'>升级成功！</font>","Type":9}')
+--    lib996:setint(0,actor,Str_List[Choose_Index], next_level)
+--    SyncResponse(actor) --同步信息
+--   -- lib996:showformwithcontent(actor, "", "Fourelephants.UpdateFourData("..Choose_Index..","..serialize(GetFourData(actor,2))..")")
+--end
+--
+--
+--function  GetFourData(actor,way,param) --获取参数
+--    local Four_List = {}
+--    for i,data in ipairs(Str_List) do
+--        local Four_Lv = lib996:getint(0,actor,data)
+--        table.insert(Four_List,Four_Lv)
+--    end
+--    if way == 1 and param then
+--        return Four_List[param]
+--    elseif way == 2 then
+--        return Four_List
+--    elseif way == 3 then
+--        return Four_List[1],Four_List[2],Four_List[3],Four_List[4]
+--    elseif way == 4 then
+--        if (Four_List[1] + Four_List[2] + Four_List[3] + Four_List[4]) > 0 then
+--            return 1
+--        else
+--            return 2
+--        end
+--    end
+--end
+--
+--GameEvent.add(EventCfg.onLoginAttr, function (actor, loginattrs)
+--   if GetFourData(actor,4) == 2 then return end
+--   local FourData =  GetFourData(actor,2)
+--   for i,data in ipairs(FourData) do
+--       local level = GetFourData(actor,1,i)
+--       local next_level = level + 1
+--       local cfg = cfg_sixiang[level+add_List[i]]
+--       table.insert(loginattrs,cfg.attribute)
+--   end
+--end, "四象之力")
+--
+--
