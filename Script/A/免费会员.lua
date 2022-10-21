@@ -264,3 +264,8 @@ function shengji(actor)
     --3.刷新界面
     SyncResponse(actor)
 end
+
+---@param index integer 任务id
+function finish_renwu(actor, index)
+    print(index)
+end
