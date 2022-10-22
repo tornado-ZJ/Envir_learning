@@ -214,7 +214,7 @@ function attackdamage(actor, Target, Hiter, MagicId, Damage)
     -- LOGPrint("SH="..Damage)
     -- LOGWrite("SH="..Damage)
 
-    return 10000
+    return Damage
 end
 
 --攻击后
@@ -375,9 +375,6 @@ end
 --        print("货币【"..name.."】改变：", moneyidx, curnum)
 --    end
 --end
-
-
-
 
 function on_burst(attack,ack)    --暴击流程--attack是攻击者
     local burst = lib996:attr(attack,29)       --暴击概率

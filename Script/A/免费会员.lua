@@ -233,7 +233,158 @@ local cfg_huiyuan = {
         }
     },
 }
-
+local cfg_renwu = {
+    [1] = {
+        [1] = {
+            renwu = "角色转生等级达到<font color='#01f801'>2转</font>",
+        },
+        [2] = {
+            renwu = "击杀<font color='#01f801'>320级</font>及以上怪物<font color='#01f801'>100只</font>",
+        },
+        [3] = {
+            renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10转</font>以上装备",
+        },
+        [4] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+    },
+    [2] = {
+        [1] = {
+            renwu = "角色转生等级达到<font color='#01f801'>3转</font>",
+        },
+        [2] = {
+            renwu = "击杀<font color='#01f801'>320级</font>及以上怪物<font color='#01f801'>100只</font>",
+        },
+        [3] = {
+            renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10转</font>以上装备",
+        },
+        [4] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+        [5] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+    },
+    [3] = {
+        [1] = {
+            renwu = "角色转生等级达到<font color='#01f801'>4转</font>",
+        },
+        [2] = {
+            renwu = "击杀<font color='#01f801'>320级</font>及以上怪物<font color='#01f801'>100只</font>",
+        },
+        [3] = {
+            renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10转</font>以上装备",
+        },
+        [4] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+        [5] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+    },
+    [4] = {
+        [1] = {
+            renwu = "角色转生等级达到<font color='#01f801'>5转</font>",
+        },
+        [2] = {
+            renwu = "击杀<font color='#01f801'>320级</font>及以上怪物<font color='#01f801'>100只</font>",
+        },
+        [3] = {
+            renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10转</font>以上装备",
+        },
+        [4] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+        [5] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+    },
+    [5] = {
+        [1] = {
+            renwu = "角色转生等级达到<font color='#01f801'>6转</font>",
+        },
+        [2] = {
+            renwu = "击杀<font color='#01f801'>320级</font>及以上怪物<font color='#01f801'>100只</font>",
+        },
+        [3] = {
+            renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10转</font>以上装备",
+        },
+        [4] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+        [5] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+    },
+    [6] = {
+        [1] = {
+            renwu = "角色转生等级达到<font color='#01f801'>7转</font>",
+        },
+        [2] = {
+            renwu = "击杀<font color='#01f801'>320级</font>及以上怪物<font color='#01f801'>100只</font>",
+        },
+        [3] = {
+            renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10转</font>以上装备",
+        },
+        [4] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+        [5] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+    },
+    [7] = {
+        [1] = {
+            renwu = "角色转生等级达到<font color='#01f801'>8转</font>",
+        },
+        [2] = {
+            renwu = "击杀<font color='#01f801'>320级</font>及以上怪物<font color='#01f801'>100只</font>",
+        },
+        [3] = {
+            renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10转</font>以上装备",
+        },
+        [4] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+        [5] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+    },
+    [8] = {
+        [1] = {
+            renwu = "角色转生等级达到<font color='#01f801'>9转</font>",
+        },
+        [2] = {
+            renwu = "击杀<font color='#01f801'>320级</font>及以上怪物<font color='#01f801'>100只</font>",
+        },
+        [3] = {
+            renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10转</font>以上装备",
+        },
+        [4] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+        [5] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+    },
+    [9] = {
+        [1] = {
+            renwu = "角色转生等级达到<font color='#01f801'>10转</font>",
+        },
+        [2] = {
+            renwu = "击杀<font color='#01f801'>320级</font>及以上怪物<font color='#01f801'>100只</font>",
+        },
+        [3] = {
+            renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10转</font>以上装备",
+        },
+        [4] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+        [5] = {
+            renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
+        },
+    }
+}
 function getcfg_mianfeihuiyuan()
     return cfg_huiyuan
 end

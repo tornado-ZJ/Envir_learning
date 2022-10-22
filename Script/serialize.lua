@@ -322,7 +322,7 @@ function ssrSecToHMS(sec)
 end
 
 function FBackZone(actor)
-    lib996:mapmove(actor, "0",327,275,5)
+    lib996:mapmove(actor, "3",330,330,9)
 end
 
 --检查一个对象的范围

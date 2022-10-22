@@ -45,8 +45,9 @@ function ceshi1(actor)
     --local makeid = lib996:getiteminfo(actor, item, 1)
     --lib996:additemattr(actor, makeid, 30, 1, 100)
     --lib996:changeitemupgradecount(actor, 0, 10)
-    RequestOpenWnd(actor)
+    --RequestOpenWnd(actor)
     --lib996:setint(0, actor, "当前会员等级", 5)
+    --FBackZone(actor)
 end
 
 --GameEvent.add(EventCfg.onClicknpc, ceshi1, "测试1")

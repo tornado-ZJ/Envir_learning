@@ -236,5 +236,16 @@ function lib996:getitemattr(actor, makeid, nTag) end
 ---@return true成功false失败
 function lib996:delitemattr(actor,makeid,type,attid) end
 
+---跳转到地图随机坐标
+---@param actor object玩家对象
+---@param mapname string地图名
+function lib996:map(actor,mapname) end
 
-
+---采集挖矿等进度条操作
+---@param actor object玩家对象
+---@param time int进度条时间秒
+---@param succ string成功后跳转的函数
+---@param msg string提示消息
+---@param canstop 中断0 1
+---@param fail string中断触发的函数
+function lib996:showprogressbardlg(actor,time,succ,msg,canstop,fail) end
