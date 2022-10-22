@@ -213,7 +213,7 @@ end
 function attackdamage(actor, Target, Hiter, MagicId, Damage)
     -- LOGPrint("SH="..Damage)
     -- LOGWrite("SH="..Damage)
-
+    Damage = 10000
     return Damage
 end
 
@@ -366,7 +366,7 @@ function moneychangeex(actor,id)
 end
 
 function titlechangeex(actor, id)
-    print("称号改变",id)
+    --print("称号改变",id)
 end
 --for _,moneyidx in pairs(money) do
 --    _G["moneychange"..moneyidx] = function (actor)

@@ -30,7 +30,7 @@ function lib996:humanmp(actor, operate, nvalue, effid) end
 ---@param actor 对象
 ---@param id integer
 ---@param param param
-function lib996:getbaseinfo(actaaaor, id, param)  end
+function lib996:getbaseinfo(actor, id, param)  end
 
 --发送聊天框消息
 ---@param actor object玩家对象
@@ -249,3 +249,29 @@ function lib996:map(actor,mapname) end
 ---@param canstop 中断0 1
 ---@param fail string中断触发的函数
 function lib996:showprogressbardlg(actor,time,succ,msg,canstop,fail) end
+
+
+---根据怪物id返回怪物基础信息
+---@param idx object怪物的IDX
+---@param id int1怪物名称2怪物名字颜色3杀死怪物获得的经验值
+function lib996:getmonbaseinfo(idx,id) end
+
+---获取玩家转生等级
+---@param actor object玩家对象
+---@return int玩家转生等级
+function lib996:getrelevel(actor) end
+
+---设置玩家转生等级
+---@param acto object玩家对象
+---@param n int转生等级
+function lib996:setrelevel(acto,n) end
+
+---获取玩家当前等级
+---@param actor object玩家对象
+---@return int玩家当前等级
+function lib996:getlevel(actor) end
+
+---设置玩家当前等级
+---@param actor object玩家对象
+---@param n int等级
+function lib996:setlevel(actor, n) end
