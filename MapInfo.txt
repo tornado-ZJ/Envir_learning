@@ -1,30 +1,44 @@
-[3 ÃËÖØÊ¡]
-[d612 ÐÂÊÖµØÍ¼]
-
+[3 ÃËÖØÊ¡] 
 [0150	É³°Í¿Ë»Ê¹¬]
+[BX1 µØÍ¼1]
+[BX2 µØÍ¼2]
+[BX3 µØÍ¼3]
+[BX4 µØÍ¼4]
+[BX5 µØÍ¼5]
+[BX6 µØÍ¼6]
+[BX7 µØÍ¼7]
+[BX8 µØÍ¼8]
+[BX9 µØÍ¼9]
+[BX10 µØÍ¼10]
+[BX11 µØÍ¼11]
+[BX12 µØÍ¼12]
+[BX13 µØÍ¼13]
+[BX14 µØÍ¼14]
+[BX15 µØÍ¼15]
+[BX17 µØÍ¼16]
+[BX18 µØÍ¼17]
+[BX21 µØÍ¼18]
+[BX22 µØÍ¼19]
 3       624  278 -> 0150          6  21
-3       627  278 -> 0150         11  22
-3       634  271 -> 0150         19  14
-3	631  274 -> 0150	 15  19
-0150	 15   20 -> 3		631  275
-0150	 16   19 -> 3		632  274
-0150	  8   23 -> 3		624  271
-3	624  271 -> 0150	  9   23
-
-
-
+3       627  278 -> 0150         11  22 
+3       634  271 -> 0150         19  14 
+3	631  274 -> 0150	 15  19 
+0150	 15   20 -> 3		631  275 
+0150	 16   19 -> 3		632  274 
+0150	  8   23 -> 3		624  271 
+3	624  271 -> 0150	  9   23 
 ;¨X©¨©¨©¨©¨©¨©¨©¨¨[
 ;©ªÁù¸öÐÂÒÂ·þµØµã©ª
 ;¨^©¨©¨©¨©¨©¨©¨©¨¨a
-[t232 Ç¯³æ³²Ñ¨] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(1) day
-11         343,325              ->         t232       22,24
-[t218 ËÀÍöÉñµî] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(0) day
-4          205,218              ->         t218       14,16
-[t339 µØÓüÁÒÑæ] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(0) day
-0          428,474              ->         t339       23,24
-[t219 ÉîÔ¨Ä§Óò] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(1) day
-1          215,312              ->         t219       81,14
-[t315 ¶éÂä·Ø³¡] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(1) day
-1          320,56               ->         t315       49,31
-[t118 À§»óµîÌÃ] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(2) day
+[t232 Ç¯³æ³²Ñ¨] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(1) day 
+11         343,325              ->         t232       22,24 
+[t218 ËÀÍöÉñµî] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(0) day 
+4          205,218              ->         t218       14,16 
+[t339 µØÓüÁÒÑæ] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(0) day 
+0          428,474              ->         t339       23,24 
+[t219 ÉîÔ¨Ä§Óò] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(1) day 
+1          215,312              ->         t219       81,14 
+[t315 ¶éÂä·Ø³¡] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(1) day 
+1          320,56               ->         t315       49,31 
+[t118 À§»óµîÌÃ] norecall norandommove nodearrecall noguildrecall nomasterrecall noreconnect(2) day 
 r001       55,94                ->         t118       14,15

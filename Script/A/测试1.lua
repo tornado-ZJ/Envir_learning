@@ -7,48 +7,11 @@
 lib996:include("Script/serialize.lua")
 
 function ceshi1(actor)
-    ----lib996:setint(0, actor, "个人捐献数量",10)
-    ----lib996:setsysint("捐献总数", 10);
-    ----print(lib996:getsysint("捐献总数").."---------------")
-    --lib996:playeffect(actor, 30119,0,0,0,0,0)
-    --if lib996:checktitle(actor, "第二富豪") then
-    --    print("---------------------11111")
-    --end
-    --lib996:superman(actor,1)
-    --lib996:confertitle(actor, "狂暴之力")
-    --local tbl = {
-    --    [1] = {
-    --        [1] = ConstCfg.money.ddqg,
-    --        [2] = 100000,
-    --    },
-    --    [2] = {
-    --        [1] = ConstCfg.money.beigong,
-    --        [2] = 1000
-    --    }
-    --}
-    --lib996:playeffect(actor, 30117,0,0,0,0,0)
+    --lib996:newpicktask(actor,1,'任务状态','当前杀怪数量')
+    --lib996:newcompletetask(actor,1)
+    local str = string.gsub("<font color='#efeded'>击杀</font>" .. "<font color='#ff7f50'>50级</font>" .. "<font color='white'>以上怪物</font>" .. "<font color='#ef321b'>杀怪数量/10</font>", "杀怪数量", 5)
 
-    --lib996:confertitle(actor, "初入江湖")
-    --openUI(actor)
-    --local c = lib996:getitemattr(actor, makeid, -1)
-    --print(c)
-
-    --local item = lib996:linkbodyitem(actor, 1)
-    --local makeid = lib996:getiteminfo(actor, item, 1)
-    --local itemobject = lib996:getitembymakeindex(actor,makeid)
-    --if item == itemobject then
-    --    print("==")
-    --else
-    --    print("~=")
-    --end
-    --local item = lib996:linkbodyitem(actor, 1)
-    --local makeid = lib996:getiteminfo(actor, item, 1)
-    --lib996:additemattr(actor, makeid, 30, 1, 100)
-    --lib996:changeitemupgradecount(actor, 0, 10)
-    --RequestOpenWnd(actor)
-    lib996:setint(0, actor, "VIP_当前杀怪数量", 100)
-    --FBackZone(actor)
-
+    lib996:newchangetask(actor,1,str)
 end
 
 --GameEvent.add(EventCfg.onClicknpc, ceshi1, "测试1")
