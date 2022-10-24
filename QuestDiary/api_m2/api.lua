@@ -275,3 +275,82 @@ function lib996:getlevel(actor) end
 ---@param actor object玩家对象
 ---@param n int等级
 function lib996:setlevel(actor, n) end
+
+---任务被点击时
+---@param actor object玩家对象
+---@param id int任务id
+function clicknewtask(actor,id) end
+
+---新建任务时触发
+---@param actor object玩家对象
+---@param id int新建的任务id
+function picktask(actor, id) end
+
+---任务变化时
+---@param actor object玩家对象
+function changetask(actor) end
+
+---删除计划任务
+---@param id int任务计划id
+function lib996:delscheduled(id) end
+
+---判断计划任务是否存在
+---@param id int任务计划id
+---@return bool
+function lib996:hasscheduled(id) end
+
+---添加计划任务
+---@param id int任务计划id不可重复
+---@param name str任务计划名称
+---@param itype int0指定时间1每天执行2每周执行3每月执行
+---@param strtime str时间表详细见示例多时间#拼接
+---@param strfun str回调函数
+---@param param str999#adas#1a1a
+---@return bool
+function lib996:addscheduled(id,name,itype,strtime,strfun,param) end
+
+---任务置顶显示
+---@param actor object玩家对象
+---@param id int任务id
+function lib996:tasktopshow(actor,id) end
+
+---删除任务
+---@param actor object玩家对象
+---@param id int任务id
+function lib996:newdeletetask(actor,id) end
+
+---完成任务
+---@param actor object玩家对象
+---@param id int任务id
+function lib996:newcompletetask(actor,id) end
+
+---刷新进行中任务状态
+---@param actor object玩家对象
+---@param id int任务id
+---@param a str参数1
+---@param b str参数2
+---@param c str参数3
+---@param d str参数4
+---@param e str参数5
+---@param f str参数6
+---@param g str参数7
+---@param h str参数8
+---@param i str参数9
+---@param j str参数10
+function lib996:newchangetask(actor,id,a,b,c,d,e,f,g,h,i,j) end
+
+---新建任务
+---@param actor object玩家对象
+---@param id int任务id
+---@param a str参数1
+---@param b str参数2
+---@param c str参数3
+---@param d str参数4
+---@param e str参数5
+---@param f str参数6
+---@param g str参数7
+---@param h str参数8
+---@param i str参数9
+---@param j str参数10
+function lib996:newpicktask(actor,id,a,b,c,d,e,f,g,h,i,j) end
+

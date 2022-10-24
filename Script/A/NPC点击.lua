@@ -30,6 +30,8 @@ function npcclick(actor, npcid)
     elseif npcid == 8 then
     elseif npcid == 10 then
         mianfeihuiyuan(actor)
+    elseif npcid == 11 then
+        lib996:map(actor, "BX3")
     elseif npcid == 18 then
         ceshi1(actor)
     end

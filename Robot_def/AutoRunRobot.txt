@@ -5,6 +5,6 @@
 ;RunOnDay：按每天什么时候运行
 ;RUNONWEEK：按星期几及时间运行
 ;————————————————————————————————————————————————————
+#AutoRun NPC RUNONDAY 00:00:00 @beforedawn 
 
-#AutoRun NPC RUNONDAY 00:00:00 @beforedawn
 

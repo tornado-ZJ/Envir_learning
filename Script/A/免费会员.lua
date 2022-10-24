@@ -22,6 +22,7 @@ local cfg_huiyuan = {
             [3] = {
                 [1] = 10014,
                 [2] = 10
+
             },
             [4] = {
                 [1] = 10014,
@@ -239,20 +240,25 @@ local cfg_renwu = {
         ---1 转生等级任务 2 杀怪任务 3 装备任务 4 等级任务
         [1] = {
             number = 1,
+            task = "<font color='#f0ffff'>转生达到</font>".."<font color='#ef321b'>转生等级/10</font>",
             renwu = "角色转生等级达到<font color='#01f801'>1转</font>",
         },
         [2] = {
+            mapid = "BX1",
             number = 100,
             level = 50,
+            task = "<font color='#efeded'>击杀</font>" .. "<font color='#ff7f50'>50级</font>" .. "<font color='white'>以上怪物</font>" .. "<font color='#ef321b'>杀怪数量/10</font>",
             renwu = "击杀<font color='#01f801'>50级</font>及以上怪物<font color='#01f801'>100只</font>",
         },
         [3] = {
             number = 6,
             level = 10,
+            task = "<font color='#f0ffff'>穿戴达到</font>".."<font color='#ef321b'>穿戴等级/10</font>",
             renwu = "穿戴<font color='#01f801'>6件</font><font color='#01f801'>10阶</font>以上装备",
         },
         [4] = {
             number = 100,
+            task = "<font color='#f0ffff'>等级达到</font>".."<font color='#ef321b'>角色等级/100</font>",
             renwu = "角色等级达到<font color='#01f801'>100级</font>",
         },
     },
@@ -450,11 +456,11 @@ function shengji(actor)
     SyncResponse(actor)
 end
 
----@param index integer 任务id
-function finish_renwu(actor, index)
-    print(index)
+function quwancheng(actor, id)
+    local cur_VIP = lib996:getint(0, actor, cfg_huiyuan.var.cur_VIP)
+    print("任务id", id)
+    lib996:newpicktask(actor, 6, "5")
 end
-
 --计算杀怪任务
 GameEvent.add(EventCfg.onKillMon, function(actor, monobj, monidx)
     local cur_VIP_level = lib996:getint(0, actor, cfg_huiyuan.var.cur_VIP)
@@ -465,9 +471,22 @@ GameEvent.add(EventCfg.onKillMon, function(actor, monobj, monidx)
     if lib996:getbaseinfo(monobj, ConstCfg.gbase.level) >= renwu.level then
         local mon_number = lib996:getint(0, actor, cfg_huiyuan.var.mon_number)
         lib996:setint(0, actor, cfg_huiyuan.var.mon_number, mon_number + 1)
-    -- 如果要做任务完成提示可以在这里加一个任务完成变量赋值
+        lib996:newchangetask(actor, 2, string.gsub(cfg_renwu[cur_VIP_level + 1][2].task, "杀怪数量", mon_number + 1))
+        -- 如果要做任务完成提示可以在这里加一个任务完成变量赋值
     end
     --print("当前杀怪数量",lib996:getint(0, actor, cfg_huiyuan.var.mon_number))
 end, "免费会员")
 
---转生等级任务 等级任务 装备任务 无需记录
+GameEvent.add(EventCfg.onLogin, function()
+    local cur_VIP_level = lib996:getint(0, actor, cfg_huiyuan.var.cur_VIP)
+    if cur_VIP_level >= #cfg_huiyuan then
+        return
+    end
+    local mon_number = lib996:getint(0, actor, cfg_huiyuan.var.mon_number)
+    local cfg = cfg_renwu[cur_VIP_level + 1]
+    lib996:newchangetask(actor, 1, string.gsub(cfg[1].task, "转生等级", lib996:getrelevel(actor)))
+    lib996:newchangetask(actor, 2, string.gsub(cfg[2].task, "杀怪数量", lib996:getint(0, actor, cfg_huiyuan.var.mon_number)))
+    lib996:newchangetask(actor, 3, string.gsub(cfg[3].task, "穿戴等级", 5))
+    lib996:newchangetask(actor, 4, string.gsub(cfg[4].task, "角色等级", lib996:getlevel(actor)))
+end, "免费会员")
+
